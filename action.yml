@@ -1,0 +1,23 @@
+name: "dep-scan"
+description: "dep-scan is a fully open-source security audit tool for project dependencies based on known vulnerabilities and advisories."
+inputs:
+  src:
+    description: "Source directory to scan. Defaults to workspace"
+    required: false
+    default: "/github/workspace"
+  report_file:
+    description: "Output file for the generated report. Defaults to reports/depscan.json"
+    required: false
+    default: "/github/workspace/reports/depscan.json"
+runs:
+  using: "docker"
+  image: "docker://quay.io/appthreat/dep-scan:latest"
+  args:
+    - "scan"
+    - "--src"
+    - ${{ inputs.src }}
+    - "--report_file"
+    - ${{ inputs.report_file }}
+branding:
+  icon: "check"
+  color: "blue"
