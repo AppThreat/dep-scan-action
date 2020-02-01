@@ -9,6 +9,9 @@ inputs:
     description: "Output file for the generated report. Defaults to reports/depscan.json"
     required: false
     default: "/github/workspace/reports/depscan.json"
+  bom:
+    description: "Use the pre-built bom file instead of generating one"
+    required: false
 runs:
   using: "docker"
   image: "docker://quay.io/appthreat/dep-scan:latest"
