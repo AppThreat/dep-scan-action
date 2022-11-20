@@ -14,13 +14,14 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "docker://quay.io/appthreat/dep-scan:latest"
+  image: "docker://ghcr.io/appthreat/dep-scan:latest"
   args:
-    - "scan"
+    - "depscan"
     - "--src"
     - ${{ inputs.src }}
     - "--report_file"
     - ${{ inputs.report_file }}
+    - "--suggest"
 branding:
   icon: "check"
   color: "blue"
