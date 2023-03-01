@@ -9,7 +9,7 @@ With minimal configuration
 ```yaml
 - uses: AppThreat/dep-scan-action@master
   env:
-    VULNDB_HOME: ${{ github.workspace }}/db
+    VDB_HOME: ${{ github.workspace }}/db
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
@@ -18,7 +18,7 @@ Upload reports to build artifacts
 ```yaml
 - uses: AppThreat/dep-scan-action@master
   env:
-    VULNDB_HOME: ${{ github.workspace }}/db
+    VDB_HOME: ${{ github.workspace }}/db
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 - uses: actions/upload-artifact@v1
   with:
