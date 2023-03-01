@@ -16,7 +16,6 @@ runs:
   using: "docker"
   image: "docker://ghcr.io/appthreat/dep-scan:latest"
   args:
-    - "depscan"
     - "--src"
     - ${{ inputs.src }}
     - "--report_file"
