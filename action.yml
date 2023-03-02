@@ -14,7 +14,7 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "docker://ghcr.io/appthreat/dep-scan:latest"
+  image: "docker://ghcr.io/appthreat/dep-scan:master"
   args:
     - "--src"
     - ${{ inputs.src }}
