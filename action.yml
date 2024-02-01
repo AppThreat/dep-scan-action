@@ -1,4 +1,4 @@
-name: "dep-scan"
+name: "owasp-dep-scan"
 description: "dep-scan is a fully open-source security audit tool for project dependencies based on known vulnerabilities and advisories."
 inputs:
   src:
@@ -9,18 +9,25 @@ inputs:
     description: "Output file for the generated report. Defaults to reports/depscan.json"
     required: false
     default: "/github/workspace/reports/depscan.json"
-  bom:
-    description: "Use the pre-built bom file instead of generating one"
+  profile:
+    description: "Name of the profile to use (appsec, research, operational, threat-modeling, license-compliance, generic)"
     required: false
+    default: "generic"
+  thank_you:
+    description: "Indicate you have sponsored OWASP dep-scan"
+    required: false
+    default: "I have not sponsored OWASP-dep-scan."
+
 runs:
   using: "docker"
-  image: "docker://ghcr.io/appthreat/dep-scan:master"
+  image: "docker://ghcr.io/owasp-dep-scan/dep-scan:release/6.x"
   args:
     - "--src"
     - ${{ inputs.src }}
     - "--report_file"
     - ${{ inputs.report_file }}
-    - "--suggest"
+    - "--profile"
+    - ${{ inputs.profile }}
 branding:
   icon: "check"
   color: "blue"
